@@ -19,7 +19,7 @@ class Library {
         }
         this.#drawLibrary();
 
-        webFormAddBook.htmlMixin().getAddBookButton().addEventListener('click', this.#addBook.bind(this));
+        webFormAddBook.htmlMixin.getAddBookButton().addEventListener('click', this.#addBook.bind(this));
 
         this.formRemoveBookButton().addEventListener('click', this.#removeBook.bind(this));
 
@@ -35,10 +35,10 @@ class Library {
 
     #addBook() {
         const bookObject = new Book(
-            webFormAddBook.htmlMixin().getInputBookTitle().value,
-            webFormAddBook.htmlMixin().getInputBookAuthors().value,
-            webFormAddBook.htmlMixin().getInputBookPages().value,
-            webFormAddBook.htmlMixin().getInputBookIsRead().value,
+            webFormAddBook.htmlMixin.getInputBookTitle().value,
+            webFormAddBook.htmlMixin.getInputBookAuthors().value,
+            webFormAddBook.htmlMixin.getInputBookPages().value,
+            webFormAddBook.htmlMixin.getInputBookIsRead().value,
         )
         this.#addBookToLibrary(bookObject);
         return this.#drawBook(bookObject);

@@ -1,6 +1,6 @@
 const webFormAddBook = (() => {
 
-    const htmlMixin = () => {
+    const htmlMixin = (() => {
 
         const getAddBookButton = () => document.querySelector('#form-add-book-button')
         const getInputBookTitle = () => document.querySelector('#input-book-title')
@@ -15,7 +15,7 @@ const webFormAddBook = (() => {
             getInputBookPages,
             getInputBookIsRead
         }
-    }
+    })();
 
     return { htmlMixin }
 })();
