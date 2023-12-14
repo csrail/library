@@ -1,5 +1,5 @@
 const dataObject = {
-    property: "value"
-}
+    property: "value",
+};
 
 export default dataObject;
