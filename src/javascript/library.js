@@ -1,4 +1,5 @@
 import Book from "./book"
+import webFormAddBook from "./htmlMixins/webFormAddBook";
 
 class Library {
     #library = [];
@@ -11,7 +12,6 @@ class Library {
         new Book("Age of Extremes", "Eric Hobsbawn", 627, false),
     ]
     constructor() {
-        Object.assign(Library.prototype, webFormAddBook);
         Object.assign(Library.prototype, webFormRemoveBook);
 
         for (const book of this.#books) {
@@ -19,7 +19,7 @@ class Library {
         }
         this.#drawLibrary();
 
-        this.formAddBookButton().addEventListener('click', this.#addBook.bind(this));
+        webFormAddBook.htmlMixin().getAddBookButton().addEventListener('click', this.#addBook.bind(this));
 
         this.formRemoveBookButton().addEventListener('click', this.#removeBook.bind(this));
 
@@ -35,10 +35,11 @@ class Library {
 
     #addBook() {
         const bookObject = new Book(
-            this.formInputBookTitle().value,
-            this.formInputBookAuthors().value,
-            this.formInputBookPages().value,
-            this.formInputBookIsRead().value)
+            webFormAddBook.htmlMixin().getInputBookTitle().value,
+            webFormAddBook.htmlMixin().getInputBookAuthors().value,
+            webFormAddBook.htmlMixin().getInputBookPages().value,
+            webFormAddBook.htmlMixin().getInputBookIsRead().value,
+        )
         this.#addBookToLibrary(bookObject);
         return this.#drawBook(bookObject);
     }
@@ -113,15 +114,6 @@ class Library {
 
         this.#shelf.appendChild(bookElement);
     }
-}
-
-
-const webFormAddBook = {
-    formAddBookButton() { return document.querySelector('#form-add-book-button')},
-    formInputBookTitle() { return document.querySelector('#input-book-title')},
-    formInputBookAuthors() { return document.querySelector('#input-book-authors')},
-    formInputBookPages() { return document.querySelector('#input-book-title')},
-    formInputBookIsRead() { return document.querySelector('#input-book-read')},
 }
 
 const webFormRemoveBook = {
