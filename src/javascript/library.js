@@ -1,5 +1,6 @@
 import Book from "./book"
 import webFormAddBook from "./htmlMixins/webFormAddBook";
+import webFormRemoveBook from "./htmlMixins/webFormRemoveBook";
 
 class Library {
     #library = [];
@@ -12,8 +13,6 @@ class Library {
         new Book("Age of Extremes", "Eric Hobsbawn", 627, false),
     ]
     constructor() {
-        Object.assign(Library.prototype, webFormRemoveBook);
-
         for (const book of this.#books) {
             this.#addBookToLibrary(book);
         }
@@ -21,7 +20,7 @@ class Library {
 
         webFormAddBook.htmlMixin.getAddBookButton().addEventListener('click', this.#addBook.bind(this));
 
-        this.formRemoveBookButton().addEventListener('click', this.#removeBook.bind(this));
+        webFormRemoveBook.htmlMixin.getRemoveBookButton().addEventListener('click', this.#removeBook.bind(this));
 
         let readStateButtons = document.querySelectorAll('.read-state');
         readStateButtons.forEach(button => {
@@ -45,7 +44,7 @@ class Library {
     }
 
     #removeBook() {
-        const bookIndex = +webFormRemoveBook.formInputBookIndex().value;
+        const bookIndex = +webFormRemoveBook.htmlMixin.getInputBookIndex().value;
         const bookObject = this.#library.find((obj) => obj.bookCount === bookIndex);
         if (bookObject === void(0)) { return }
         const bookArrayIndex = this.#library.findIndex((obj) => obj === bookObject);
@@ -115,11 +114,5 @@ class Library {
         this.#shelf.appendChild(bookElement);
     }
 }
-
-const webFormRemoveBook = {
-    formRemoveBookButton() { return document.querySelector('#form-remove-book-button')},
-    formInputBookIndex() { return document.querySelector('#input-remove-book')},
-}
-
 
 export default Library
