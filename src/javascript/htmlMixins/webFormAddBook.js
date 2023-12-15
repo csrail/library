@@ -7,7 +7,7 @@ const webFormAddBook = (() => {
         const getInputBookAuthors = () =>
             document.querySelector("#input-book-authors");
         const getInputBookPages = () =>
-            document.querySelector("#input-book-title");
+            document.querySelector("#input-book-pages");
         const getInputBookIsRead = () =>
             document.querySelector("#input-book-read");
 
