@@ -4,6 +4,7 @@ import Library from "./javascript/library";
 
 (() => {
     const lib = new Library();
+    lib.setWebFormAddBookListener();
 
     return { lib };
 })();

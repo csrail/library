@@ -28,10 +28,6 @@ class Library {
         }
         this.#drawLibrary();
 
-        webFormAddBook.htmlMixin
-            .getAddBookButton()
-            .addEventListener("click", this.#addBook.bind(this));
-
         webFormRemoveBook.htmlMixin
             .getRemoveBookButton()
             .addEventListener("click", this.#removeBook.bind(this));
@@ -40,6 +36,12 @@ class Library {
         readStateButtons.forEach((button) => {
             this.#toggleBookReadState(button);
         });
+    }
+
+    setWebFormAddBookListener() {
+        webFormAddBook.htmlMixin
+            .getAddBookButton()
+            .addEventListener("click", this.#addBook.bind(this));
     }
 
     get library() {
