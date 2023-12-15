@@ -48,7 +48,8 @@ class Library {
         return this.#library;
     }
 
-    #addBook() {
+    #addBook(event) {
+        event.preventDefault();
         const bookObject = new Book(
             webFormAddBook.htmlMixin.getInputBookTitle().value,
             webFormAddBook.htmlMixin.getInputBookAuthors().value,
