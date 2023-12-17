@@ -1,7 +1,7 @@
 {
-  "name": "UPDATE NAME",
+  "name": "library",
   "version": "1.0.0",
-  "description": "UPDATE DESCRIPTION",
+  "description": "simple front end demonstrating form submission, no backend here",
   "private": true,
   "main": "src/index.js",
   "scripts": {
