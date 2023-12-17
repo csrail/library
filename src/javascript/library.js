@@ -54,7 +54,7 @@ class Library {
             webFormAddBook.htmlMixin.getInputBookTitle().value,
             webFormAddBook.htmlMixin.getInputBookAuthors().value,
             webFormAddBook.htmlMixin.getInputBookPages().value,
-            webFormAddBook.htmlMixin.getInputBookIsRead().value,
+            webFormAddBook.htmlMixin.getInputBookIsRead().checked,
         );
         this.#addBookToLibrary(bookObject);
         return this.#drawBook(bookObject);
