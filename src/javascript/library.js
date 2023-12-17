@@ -29,8 +29,8 @@ class Library {
         this.#drawLibrary();
 
         webFormRemoveBook.htmlMixin
-            .getRemoveBookButton()
-            .addEventListener("click", this.#removeBook.bind(this));
+            .getWebFormRemoveBook()
+            .addEventListener("submit", this.#removeBook.bind(this));
 
         let readStateButtons = document.querySelectorAll(".read-state");
         readStateButtons.forEach((button) => {
@@ -60,7 +60,8 @@ class Library {
         return this.#drawBook(bookObject);
     }
 
-    #removeBook() {
+    #removeBook(event) {
+        event.preventDefault();
         const bookIndex =
             +webFormRemoveBook.htmlMixin.getInputBookIndex().value;
         const bookObject = this.#library.find(
