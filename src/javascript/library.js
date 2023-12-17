@@ -40,8 +40,8 @@ class Library {
 
     setWebFormAddBookListener() {
         webFormAddBook.htmlMixin
-            .getAddBookButton()
-            .addEventListener("click", this.#addBook.bind(this));
+            .getWebFormAddBook()
+            .addEventListener("submit", this.#addBook.bind(this));
     }
 
     get library() {
